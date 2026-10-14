@@ -1,0 +1,33 @@
+101|0|Beklenmedik bir kriz anýnda panik yapmadan soðukkanlýlýkla çözüm üretmeye odaklanýrým.|0|2.5
+102|0|Geçmiþte yaptýðým hatalarý sürekli zihnimde döndürür, kendimi içten içe yargýlarým.|1|3.8
+103|0|Büyük emek verdiðim ancak yürümeyen bir iþi/iliþkiyi mantýklý bir noktada bitirmekte zorlanmam.|0|4.5
+104|0|Büyük bir belirsizlik altýnda karar alýrken aþýrý analiz yapmaktan eyleme geçmekte zorlanýrým.|1|4.8
+105|0|Aldýðým sert eleþtirileri kiþisel bir saldýrý olarak deðil, geliþim alaný olarak görürüm.|0|3.0
+106|0|Yoðun stres altýndayken duygularýmý tamamen kapatýp otomatiðe baðlama eðilimindeyimdir.|1|3.6
+201|1|Romantik iliþkilerimde partnerimin baðýmsýzlýðýna saygý duyar, kendi alanýmý da korurum.|0|2.0
+202|1|Tartýþma anlarýnda partnerimin beni terk edeceðinden korkup geri çekilme veya yoðun tepki verme eðilimindeyimdir.|1|3.5
+203|1|Partnerim kendi kabuðuna çekildiðinde beni artýk sevmediðini düþünüp kaygýlanýrým.|1|4.2
+204|1|Aþkta hayal kýrýklýðýna uðradýðýmda yeni bir insana güven duymakta çok büyük zorluk çekerim.|1|4.6
+205|1|Ýliþkide duygularýmý ve ihtiyaçlarýmý þeffafça ifade etmekten çekinmem.|0|2.8
+206|1|Yakýn iliþki kurmak ve duygusal olarak birine baðlanmak bana ürkütücü gelir.|1|4.0
+301|2|Kök ailemle (anne/baba/kardeþ) iliþkilerimde kendi yetiþkin sýnýrlarýmý korumayý baþarýrým.|0|2.2
+302|2|Ailemden onay almadýðým bir kararý uygularken yoðun suçluluk duygusu yaþarým.|1|4.0
+303|2|Çocukluðumda yaþadýðým ailevi dinamiklerin bugün bile kararlarýmý etkilediðini hissederim.|1|4.7
+304|2|Zor durumda kaldýðýmda ailemden yardým istemekten veya onlara sýðýnmaktan çekinmem.|0|3.1
+305|2|Ailemle çatýþmamak adýna kendi gerçek isteklerimden veya hayallerimden vazgeçebilirim.|1|3.8
+306|2|Kendi kuracaðým gelecekte ailemden tamamen baðýmsýz özgün bir yaþam modeli benimserim.|0|2.9
+401|3|Benim için baþarý; yüksek prestij ve para kazanmaktan ziyade potansiyelimi gerçekleþtirmektir.|0|2.0
+402|3|Kariyerimde büyük bir fýrsat gördüðümde baþarýsýzlýk riskine raðmen cesurca adým atarým.|0|3.7
+403|3|Haksýzlýða uðradýðýmda hakkýmý profesyonel sýnýrlar içinde sonuna kadar ararým.|0|4.4
+404|3|Yoðun çalýþma temposunda sýnýrlarýmý bilir, tükenmeden kendime deþarj alaný yaratýrým.|0|4.1
+405|3|Baþarýsýzlýkla sonuçlanan bir projenin ardýndan hýzlýca toparlanýp yeni bir hedefe kilitlenirim.|0|3.3
+406|3|Ýþ ve eðitim hayatýmda rekabet duygusu motivasyonumu artýrýr.|0|3.0
+501|4|Yeni girdiðim ortamlarda rahatça diyalog baþlatýr, kendimi doðal þekilde ifade ederim.|0|2.1
+502|4|Bir dostum etiðe veya mantýða aykýrý bir hata yaptýðýnda bunu dürüstçe yüzüne söylerim.|0|3.6
+503|4|Ýnsan iliþkilerinde sýnýrlarým ihlal edildiðinde net þekilde dur derim.|0|4.5
+504|4|Ýnsanlara güvenmek için eylemleriyle zaman içinde rüþtünü ispatlamasýný beklerim.|0|3.9
+505|4|Bir arkadaþýmýn büyük baþarýsý bende gurur yaratýr, kýyaslama yapýp eksik hissetmem.|0|2.8
+506|4|Yakýn iliþkilerimde kendimden aþýrý kompromis verip hayýr demekte zorlanýrým.|1|3.5
+901|99|Hayatým boyunca hiç kimse hakkýnda olumsuz veya kötü bir þey düþünmedim.|0|2.5|2.5
+902|99|Þimdiye kadar hiçbir konuda hiç kimseye yalan söylemedim.|0|2.8|2.8
+903|99|Hata yaptýðýmda bunu her zaman anýnda kabul eder, hiç kimseyi suçlamam.|0|2.3|2.2

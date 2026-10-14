@@ -1,0 +1,21 @@
+id,category,text,opt0,opt1,opt2,opt3,correct,difficulty
+101,0,Telafisi zor bir teknik hatayı teslimata 2 saat kala fark ettiniz. Ne yaparsınız?,Müşteriye dürüstçe durumu bildirip ek süre talep ederim,Hatayı geçici yamayla kapatıp çaktırmam,Ekibe baskı kurup durmaksızın düzeltmeye çalışırım,Sorumluluğu başkasına atarım,0,2.0
+102,0,Kritik bir karar anında ekibiniz ikiye bölündü. Zaman daralıyor. Kararı nasıl alırsınız?,Veriye dayalı risk analizini karşılaştırıp vizyona uygun olanı seçerim,Oylama yapıp çoğunluğun dediğini uygularım,Lider olarak kendi hissettiğim yöntemi dikte ederim,Karar sorumluluğunu üst yönetime devrederim,0,3.5
+103,0,Yüksek stres ve belirsizlik altında çalışırken en kritik zihinsel stratejiniz nedir?,Kontrol edebildiğim değişkenlere odaklanıp belirsizliği kabul etmek,Tüm olumsuz senaryoları zihnimde simüle etmek,Duygularımı tamamen bastırıp göreve odaklanmak,İşleri akışına bırakmak,0,4.5
+104,0,Batmaya yakın bir projeye 1 milyon $ harcandı. 500 bin $ daha verilirse %30 kurtulma şansı var. Kararınız?,Zararı kabul edip yatırımı derhal durdururum (Sunk Cost),%30 şansı denemek için 500 bin $'ı da yatırırım,Kararı geciktirip piyasanın düzelmesini beklerim,Sorumluluğu başkasına atarım,0,4.8
+201,1,Bir yatırım araci ilk yil %50 deger kazanip ikinci yil %40 deger kaybediyor. Net durum nedir?,%10 zarar,%10 kar,Başlangıç ile aynı,%20 kar,0,2.0
+202,1,4 yazılımcı bir modülü 12 günde bitiriyor. 2 katı büyüklükteki modülü 6 yazılımcı kaç günde bitirir?,16,12,8,24,0,3.5
+203,1,Pazar payı %20'den %25'e çıkarılmıştır. Pazar payındaki oransal (yüzdesel) artış nedir?,%25,%5,%20,%50,0,4.5
+204,1,Girdi boyutu (N) 2 katına çıktığında çalışma süresi 4 katına çıkan algoritmanın karmaşıklığı nedir?,O(N^2),O(N),O(log N),O(2^N),0,4.8
+301,2,"2, 3, 5, 8, 13, 21, ?" dizisinde soru işareti yerine hangi sayı gelmelidir?,34,31,33,35,0,2.0
+302,2,"3, 7, 15, 31, 63, ?" dizisindeki kurala göre sonraki terim kaçtır?,127,125,126,128,0,3.5
+303,2,"1, 4, 27, 256, ?" dizisindeki kural nedir (n^n)?,3125,1024,625,2048,0,4.5
+304,2,"2, 6, 12, 20, 30, 42, ?" dizisinde soru işareti yerine ne gelmelidir?,56,54,52,60,0,4.8
+401,3,Bir küpün tüm yüzeyleri kırmızıya boyanıp 27 eş küçük küpe bölünüyor. Kaç küçük küpün HİÇBİR yüzü boyalı değildir?,1,2,8,0,0,2.0
+402,3,Saat 03:15 iken akrep ile yelkovan arasındaki dar açı kaç derecedir?,7.5,0,15,12.5,0,3.5
+403,3,Tabanı düzgün altıgen olan bir piramidin toplam kaç ayrıtı (kenarı) vardır?,12,7,6,18,0,4.5
+404,3,3D bir nesnenin 2D izdüşümü daire ve üçgen ise bu nesne nedir?,Koni,Silindir,Küre,Piramit,0,4.8
+501,4,Saniyede 250 KB veri aktaran bağlantı ile 15 MB dosya kaç saniyede iner? (1 MB = 1000 KB),60,45,30,75,0,2.0
+502,4,125 x 16 işleminin en hızlı pratik sonucu kaçtır?,2000,1800,2200,2500,0,3.5
+503,4,Bir sunucu 0.04 saniyede bir istek işliyor. 1 dakikada kaç istek işler?,1500,1200,2000,2400,0,4.5
+504,4,((48 / 6) x 3) - (15 x 2) + 12 işleminin sonucu kaçtır?,6,12,0,18,0,4.8

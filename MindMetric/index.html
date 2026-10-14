@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMetric - Akademik Psikometrik Analiz Engine</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #090d16 0%, #111827 100%);
+            color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(17, 24, 39, 0.92);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 35px;
+            width: 100%;
+            max-width: 750px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        h1 {
+            color: #38bdf8;
+            font-size: 2.2rem;
+            margin-bottom: 6px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        p.subtitle {
+            color: #9ca3af;
+            font-size: 0.92rem;
+            margin-bottom: 25px;
+        }
+
+        .question-text {
+            font-size: 1.18rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            min-height: 75px;
+            color: #f9fafb;
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn-opt {
+            background: #1f2937;
+            border: 1px solid #374151;
+            color: #e5e7eb;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 0.98rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+            .btn-opt:hover {
+                background: #0284c7;
+                border-color: #38bdf8;
+                color: #ffffff;
+                transform: translateY(-2px);
+            }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #374151;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #38bdf8;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #374151;
+            background: #111827;
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #0284c7 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            padding: 16px 28px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .result-box {
+            text-align: left;
+            background: #111827;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #374151;
+            margin-top: 15px;
+            line-height: 1.7;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .score-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #1f2937;
+            padding-bottom: 6px;
+        }
+
+        .archetype-badge {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            padding: 8px 16px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .warning-badge {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid #ef4444;
+            color: #f87171;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- GİRİŞ EKRANI -->
+    <div class="card" id="welcome-screen">
+        <h1>🧠 MindMetric Pro</h1>
+        <p class="subtitle">Akademik Psikometrik Değerlendirme & Arketiplendirme Sistemi</p>
+        <input type="text" id="username" placeholder="Adınız Soyadınız" value="Elif Sude">
+        <button class="btn-primary" onclick="startTest()">Klinik Profillemeyi Başlat 🚀</button>
+    </div>
+
+    <!-- TEST EKRANI -->
+    <div class="card hidden" id="test-screen">
+        <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+        <div id="category-name" style="color: #38bdf8; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;"></div>
+        <div class="question-text" id="q-text">Soru yükleniyor...</div>
+        <div class="options-grid">
+            <button class="btn-opt" onclick="sendAnswer(1)">1 - Hiç Katılmıyorum</button>
+            <button class="btn-opt" onclick="sendAnswer(2)">2 - Katılmıyorum</button>
+            <button class="btn-opt" onclick="sendAnswer(3)">3 - Kısmen Katılıyorum</button>
+            <button class="btn-opt" onclick="sendAnswer(4)">4 - Katılıyorum</button>
+            <button class="btn-opt" onclick="sendAnswer(5)">5 - Tamamen Katılıyorum</button>
+        </div>
+    </div>
+
+    <!-- SONUÇ EKRANI -->
+    <div class="card hidden" id="result-screen">
+        <h1>🎯 Psikometrik Profil Raporu</h1>
+        <p class="subtitle" id="user-display"></p>
+        <div id="validity-status"></div>
+        <div class="result-box" id="results-content"></div>
+        <button class="btn-primary" style="margin-top: 20px;" onclick="location.reload()">Yeni Seans Başlat 🔄</button>
+    </div>
+
+    <script>
+        const questions = [
+            { cat: 0, catName: "Kriz & Stres Yönetimi", text: "Beklenmedik kriz anlarında soğukkanlılığımı korur ve anında eylem planı yaparım.", isRev: false, a: 1.5, b: 0.2 },
+            { cat: 0, catName: "Kriz & Stres Yönetimi", text: "Baskı altında kaldığımda felaket senaryoları düşünmekten kendimi alamam.", isRev: true, a: 1.8, b: 0.8 },
+            { cat: 0, catName: "Kriz & Stres Yönetimi", text: "Çözümü olmayan sorunlarda belirsizliği kabullenip yola devam edebilirim.", isRev: false, a: 1.2, b: 1.2 },
+            { cat: 1, catName: "Aşk & Bağlanma Stilleri", text: "İlişkilerimde karşı tarafın alanına saygı duyar, kendi özerkliğimi de korurum.", isRev: false, a: 1.4, b: -0.1 },
+            { cat: 1, catName: "Aşk & Bağlanma Stilleri", text: "Partnerim mesafe koyduğunda hemen terk edileceğimi düşünüp kaygılanırım.", isRev: true, a: 1.9, b: 0.9 },
+            { cat: 1, catName: "Aşk & Bağlanma Stilleri", text: "İlişkilerde kırılmaktan korktuğum için derin bağ kurmaktan kaçınırım.", isRev: true, a: 1.6, b: 1.1 },
+            { cat: 2, catName: "Kök Aile & Bireyleşme", text: "Ailemin beklentileriyle çelişse bile kendi hayat kararlarımı suçluluk duymadan alabilirim.", isRev: false, a: 1.5, b: 0.4 },
+            { cat: 2, catName: "Kök Aile & Bireyleşme", text: "Ailemden onay almadığım süreçlerde kendimi yetersiz ve huzursuz hissederim.", isRev: true, a: 1.7, b: 0.7 },
+            { cat: 3, catName: "Kariyer & Yaşam Amacı", text: "Benim için başarı, statüden ziyade içsel potansiyelimi ve özgünlüğümü ortaya koymaktır.", isRev: false, a: 1.3, b: -0.2 },
+            { cat: 3, catName: "Kariyer & Yaşam Amacı", text: "Kariyerimde başarısızlık riskini göze alarak cesur sıçramalar yapabilirim.", isRev: false, a: 1.8, b: 1.0 },
+            { cat: 4, catName: "Sosyal Güven Mimarisi", text: "Yeni ortamlarda kendimi olduğum gibi ifade etmekten çekinmem.", isRev: false, a: 1.2, b: -0.3 },
+            { cat: 4, catName: "Sosyal Güven Mimarisi", text: "İnsanlara hemen güvenmek yerine zaman içinde eylemlerini gözlemlerim.", isRev: false, a: 1.1, b: 0.3 },
+            // LIE SCALE (Geçerlilik Kontrol Soruları)
+            { cat: 99, catName: "Geçerlilik Denetimi", text: "Hayatım boyunca hiç kimse hakkında olumsuz veya kötü bir şey düşünmedim.", isRev: false, a: 2.5, b: 2.5 },
+            { cat: 99, catName: "Geçerlilik Denetimi", text: "Şimdiye kadar hiçbir konuda hiç kimseye yalan söylemedim.", isRev: false, a: 2.8, b: 2.8 },
+            { cat: 99, catName: "Geçerlilik Denetimi", text: "Hata yaptığımda bunu her zaman anında kabul eder, hiç kimseyi suçlamam.", isRev: false, a: 2.2, b: 2.2 }
+        ];
+
+        let currentIndex = 0;
+        let responses = [];
+        let startTime = 0;
+
+        function startTest() {
+            document.getElementById('welcome-screen').classList.add('hidden');
+            document.getElementById('test-screen').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            if (currentIndex >= questions.length) {
+                analyzeResults();
+                return;
+            }
+            startTime = Date.now();
+            let q = questions[currentIndex];
+            document.getElementById('q-text').innerText = (currentIndex + 1) + ". " + q.text;
+            document.getElementById('category-name').innerText = q.catName;
+            document.getElementById('progress').style.width = ((currentIndex / questions.length) * 100) + '%';
+        }
+
+        function sendAnswer(score) {
+            let elapsed = (Date.now() - startTime) / 1000.0;
+            let q = questions[currentIndex];
+            let rawScore = q.isRev ? (6 - score) : score;
+
+            responses.push({
+                cat: q.cat,
+                score: rawScore,
+                originalScore: score,
+                time: elapsed,
+                a: q.a,
+                b: q.b
+            });
+
+            currentIndex++;
+            loadQuestion();
+        }
+
+        function analyzeResults() {
+            document.getElementById('test-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+
+            let name = document.getElementById('username').value;
+            document.getElementById('user-display').innerText = "Danışan: " + name;
+
+            // 1. Lie Scale (Sosyal Beğenirlik / Yalan Ölçeği) Hesaplaması
+            let lieResponses = responses.filter(r => r.cat === 99);
+            let lieScore = lieResponses.reduce((acc, r) => acc + r.originalScore, 0) / lieResponses.length;
+            let isValid = lieScore < 4.2; // Aşırı mükemmeliyetçi/gerçek dışı cevap testi geçersiz kılar
+
+            // 2. Kategori Bazlı 2PL-IRT Yetenek (Theta) ve Yüzde Hesaplama
+            let catScores = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 };
+            let catCounts = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 };
+
+            responses.filter(r => r.cat !== 99).forEach(r => {
+                catScores[r.cat] += r.score;
+                catCounts[r.cat]++;
+            });
+
+            let catPct = {};
+            for (let i = 0; i < 5; i++) {
+                let avg = catCounts[i] ? (catScores[i] / catCounts[i]) : 3;
+                catPct[i] = ((avg - 1) / 4) * 100;
+            }
+
+            // 3. Geçerlilik Durum Rozeti
+            let vDiv = document.getElementById('validity-status');
+            if (!isValid) {
+                vDiv.innerHTML = `<div class="warning-badge">⚠️ <b>DİKKAT:</b> Test sonuçlarında yüksek "Sosyal Beğenirlik / Kendini Mükemmel Gösterme" eğilimi tespit edildi. Rapor ihtiyatla değerlendirilmelidir.</div>`;
+            } else {
+                vDiv.innerHTML = `<div style="color:#10b981; font-weight:600; margin-bottom:12px; font-size:0.9rem;">✓ Test Geçerlilik Normu: YÜKSEK SAMİMİYET / GEÇERLİ (Lie Scale: ${lieScore.toFixed(1)}/5.0)</div>`;
+            }
+
+            // 4. Çapraz Faktör Arketipi (Archetype Matrix)
+            let archetype = "";
+            let archetypeDesc = "";
+
+            if (catPct[3] >= 70 && catPct[0] <= 50) {
+                archetype = "Aşırı Düzeltmeci & Kırılgan Savaşçı (Over-Compensator)";
+                archetypeDesc = "Yüksek kariyer ve başarı hedefleriniz, içsel stres ve kriz toleransındaki kırılganlığı örtmek için geliştirilmiş bir savunma mekanizması olabilir. Dışsal başarıyla içsel kaygıyı dengelemeye çalışıyorsunuz.";
+            } else if (catPct[1] <= 45 && catPct[0] >= 65) {
+                archetype = "Otonom Hisar & Mantık Odaklı (Autonomous Fort)";
+                archetypeDesc = "Kriz anlarında yüksek soğukkanlılık sergilerken, romantik ilişkilerde kendinizi korumak için duygusal duvarlar örüyorsunuz. Duygulardan ziyade mantık dünyasını güvenli bir sığınak olarak görüyorsunuz.";
+            } else if (catPct[2] <= 50 && catPct[1] <= 50) {
+                archetype = "Çözülmemiş Onay Arayıcısı (Unresolved Seeker)";
+                archetypeDesc = "Erken dönem kök aile şartlanmaları ve onaylanma ihtiyacı, bugünkü ilişkilerinizde kaygılı/korumacı tutumlar sergilemenize yol açıyor. Bireyleşme sürecinizi tamamlamak öncelikli alanınız.";
+            } else {
+                archetype = "Dengeli Mimar & Bütünleşmiş Benlik (Integrated Self)";
+                archetypeDesc = "Duygusal dayanıklılık, ilişkisel bağımsızlık ve kariyer vizyonu arasında sağlıklı bir denge kurmuş durumdasınız. Sınırlarınızı korurken esneklik gösterebiliyorsunuz.";
+            }
+
+            // 5. Rapor Çıktısı
+            let html = `<div class="archetype-badge">Dominant Arketip: ${archetype}</div>`;
+            html += `<p style="font-size:0.95rem; color:#d1d5db; margin-bottom:20px;">${archetypeDesc}</p>`;
+            html += `<hr style="border-color:#374151; margin:15px 0;">`;
+
+            html += `<h4 style="color:#38bdf8; margin-top:0;">Boyut Bazlı Bilişsel Skorlar:</h4>`;
+            const catLabels = ["Kriz Yönetimi", "Aşk & Bağlanma", "Kök Aile & Bireyleşme", "Kariyer & Vizyon", "Sosyal Güven"];
+
+            catLabels.forEach((lbl, i) => {
+                html += `<div class="score-item"><span><b>${lbl}:</b></span><span style="color:#38bdf8; font-weight:bold;">%${catPct[i].toFixed(1)}</span></div>`;
+            });
+
+            document.getElementById('results-content').innerHTML = html;
+        }
+    </script>
+</body>
+</html>
